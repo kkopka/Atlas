@@ -1,4 +1,4 @@
-package Pages;
+package Pages.GeneralElements;
 
 import AT_Cucumber.MyStepdefs;
 import io.qameta.atlas.webdriver.AtlasWebElement;

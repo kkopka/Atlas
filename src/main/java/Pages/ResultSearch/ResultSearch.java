@@ -1,14 +1,14 @@
 package Pages.ResultSearch;
 
 import AT_Cucumber.MyStepdefs;
-import Pages.GeneralElements;
+import Pages.GeneralElements.CheckBox;
 import io.qameta.atlas.webdriver.AtlasWebElement;
 import io.qameta.atlas.webdriver.WebPage;
 import io.qameta.atlas.webdriver.extension.FindBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
-public interface ResultSearch extends WebPage, GeneralElements {
+public interface ResultSearch extends WebPage, CheckBox {
 
     @FindBy("//button[@data-marker='search-filters/submit-button']")
     AtlasWebElement buttonShow();

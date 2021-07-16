@@ -5,20 +5,14 @@ import Pages.StartedPage.StartedPage;
 import io.cucumber.java.ru.И;
 import io.cucumber.java.ru.Пусть;
 import io.cucumber.java.ru.Тогда;
-import io.qameta.atlas.core.Atlas;
 import io.qameta.atlas.webdriver.WebPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class MyStepdefs {
-    public static WebDriver driver;
-    public static WebDriverWait wait;
-    public static Atlas atlas;
+
+public class MyStepdefs extends BaseSteps {
+
     private StartedPage startedpage=getPage(StartedPage.class);
     private ResultSearch resultSearch=getPage(ResultSearch.class);
+
     @Пусть("открыт ресурс авито")
     public void открытРесурсАвито() {
         startedpage.open(StartedPage.URL);
@@ -26,7 +20,7 @@ public class MyStepdefs {
 
     @И("в выпадающем списке категорий выбрали {string}")
     public void вВыпадающемСпискеКатегорийВыбралиНастольныеКомпьютеры(String category) {
-        startedpage.header().categoryList(category);
+        startedpage.header().categoryList(category,getDriver());
     }
 
     @И("в поле поиска ввели значение {string}")
@@ -51,7 +45,7 @@ public class MyStepdefs {
 
     @Тогда("открылась страница результаты по запросу Мониторы")
     public void открыласьСтраницаРезультатыПоЗапросуМониторы() {
-        System.out.println(MyStepdefs.driver.getTitle());
+        System.out.println(getDriver().getTitle());
     }
 
 
@@ -67,14 +61,7 @@ public class MyStepdefs {
 
     @И("в выпадающем списке сортировка выбрали значение {string}")
     public void вВыпадающемСпискеСортировкаВыбралиЗначениеДороже(String parametrFiltr) {
-      resultSearch.filtr(parametrFiltr);
+      resultSearch.filtr(parametrFiltr,getDriver());
     }
-
-    
-    private <T extends WebPage> T getPage(Class<T> page) {
-        return atlas.create(driver, page);
-    }
-
-
 
 }

@@ -9,5 +9,4 @@ public interface Site extends WebSite {
    @Page
    StartedPage onStartedpage();
 
-
 }

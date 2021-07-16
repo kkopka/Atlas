@@ -6,6 +6,7 @@ import io.qameta.atlas.webdriver.AtlasWebElement;
 import io.qameta.atlas.webdriver.WebPage;
 import io.qameta.atlas.webdriver.extension.FindBy;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
 public interface ResultSearch extends WebPage, CheckBox {
@@ -13,8 +14,8 @@ public interface ResultSearch extends WebPage, CheckBox {
     @FindBy("//button[@data-marker='search-filters/submit-button']")
     AtlasWebElement buttonShow();
 
-    default void filtr(String parametrFiltr){
-        Select filtr=new Select(MyStepdefs.driver.findElement(By.xpath("//div[@class='index-content-2lnSO']//select[@class='select-select-3CHiM']")));
+    default void filtr(String parametrFiltr, WebDriver driver){
+        Select filtr=new Select(driver.findElement(By.xpath("//div[@class='index-content-2lnSO']//select[@class='select-select-3CHiM']")));
         filtr.selectByVisibleText(parametrFiltr);
     }
 }

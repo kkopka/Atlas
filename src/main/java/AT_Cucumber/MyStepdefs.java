@@ -20,7 +20,7 @@ public class MyStepdefs extends BaseSteps {
 
     @И("в выпадающем списке категорий выбрали {string}")
     public void вВыпадающемСпискеКатегорийВыбралиНастольныеКомпьютеры(String category) {
-        startedpage.header().categoryList(category,getDriver());
+        startedpage.header().categoryList(category,driver);
     }
 
     @И("в поле поиска ввели значение {string}")
@@ -45,7 +45,7 @@ public class MyStepdefs extends BaseSteps {
 
     @Тогда("открылась страница результаты по запросу Мониторы")
     public void открыласьСтраницаРезультатыПоЗапросуМониторы() {
-        System.out.println(getDriver().getTitle());
+        System.out.println(driver.getTitle());
     }
 
 
@@ -61,7 +61,11 @@ public class MyStepdefs extends BaseSteps {
 
     @И("в выпадающем списке сортировка выбрали значение {string}")
     public void вВыпадающемСпискеСортировкаВыбралиЗначениеДороже(String parametrFiltr) {
-      resultSearch.filtr(parametrFiltr,getDriver());
+      resultSearch.filtr(parametrFiltr,driver);
+    }
+
+    protected <T extends WebPage> T getPage(Class<T> page){
+        return atlas.create(driver,page);
     }
 
 }
